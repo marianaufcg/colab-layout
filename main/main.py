@@ -17,6 +17,7 @@ from __future__ import annotations
 
 import os
 import subprocess
+import tempfile
 import xml.etree.ElementTree as ET
 from pathlib import Path
 from shutil import which
@@ -242,6 +243,20 @@ def _regiao(comp: gf.kf.KCell, camada: tuple[int, int]) -> gf.kdb.Region:
     return gf.kdb.Region(comp.kdb_cell.begin_shapes_rec(indice))
 
 
+def _regiao_na_caixa(
+    comp: gf.kf.KCell,
+    camada: tuple[int, int],
+    caixa: gf.kdb.Box,
+) -> gf.kdb.Region:
+    """Formas da célula que encostam na caixa, no sistema da própria célula."""
+    layout = comp.kcl.layout
+    indice = layout.layer(camada[0], camada[1])
+    formas = comp.kdb_cell.begin_shapes_rec(indice)
+    formas.region = caixa
+    formas.overlapping = True
+    return gf.kdb.Region(formas)
+
+
 def silicon_overlap(
     atual: gf.kf.KCell,
     bloco: gf.kf.KCell,
@@ -256,10 +271,24 @@ def silicon_overlap(
         )
     dx = int(round(origem[0] / dbu))
     dy = int(round(origem[1] / dbu))
-    hit = _regiao(atual, CAMADA_SI) & _regiao(bloco, CAMADA_SI).transformed(
-        gf.kdb.Trans(dx, dy)
+    bloco_si = _regiao(bloco, CAMADA_SI)
+    bloco_si.transform(gf.kdb.Trans(dx, dy))
+    caixa = bloco_si.bbox()
+    if caixa.empty():
+        return 0
+    # A interseção só pode cair dentro do bloco. O booleano do chip
+    # inteiro faz o KLayout abortar (dbEdgeProcessor gs.is_reset)
+    # quando a região da Mariana entra.
+    margem = gf.kdb.Box(
+        caixa.left - 1,
+        caixa.bottom - 1,
+        caixa.right + 1,
+        caixa.top + 1,
     )
-    return hit.count()
+    atual_si = _regiao_na_caixa(atual, CAMADA_SI, margem)
+    bloco_si.merge()
+    atual_si.merge()
+    return (atual_si & bloco_si).count()
 
 
 def _copiar_arvore(destino: gf.kdb.Layout, origem: gf.kf.KCell) -> gf.kdb.Cell:
@@ -471,27 +500,50 @@ def parse_lyrdb(path: Path) -> tuple[dict[str, int], dict[str, str]]:
     return counts, descricoes
 
 
+# 3221225477 é 0xC0000005, violação de acesso. O DRC do KLayout 0.30.7
+# com threads(2) derruba o processo no Windows. Uma thread evita isso.
+_TRAVOU = {1, 3221225477, -1073741819}
+_TENTATIVAS_DRC = 3
+
+
+def deck_uma_thread() -> Path:
+    texto = DECK.read_text(encoding="utf-8")
+    ajustado = texto.replace("threads(2)", "threads(1)", 1)
+    pasta = Path(tempfile.mkdtemp(prefix="drc-"))
+    destino = pasta / DECK.name
+    destino.write_text(ajustado, encoding="utf-8", newline="\n")
+    return destino
+
+
 def executar_drc(klayout: Path, gds: Path, lyrdb: Path) -> tuple[dict[str, int], dict[str, str]]:
-    if lyrdb.exists():
-        lyrdb.unlink()
+    deck = deck_uma_thread()
     cmd = [
         str(klayout),
         "-b",
         "-nc",
         "-r",
-        str(DECK),
+        str(deck),
         "-rd",
         f"gdsfile={gds.as_posix()}",
         "-rd",
         f"resultsfile={lyrdb.as_posix()}",
     ]
-    print("DRC", gds.name, "->", lyrdb.name)
-    proc = subprocess.run(cmd, check=False)
-    if proc.returncode != 0:
-        raise RuntimeError(f"KLayout DRC saiu com código {proc.returncode}")
-    if not lyrdb.is_file():
-        raise FileNotFoundError(f"relatório DRC ausente: {lyrdb}")
-    return parse_lyrdb(lyrdb)
+    ultimo = 0
+    for tentativa in range(1, _TENTATIVAS_DRC + 1):
+        if lyrdb.exists():
+            lyrdb.unlink()
+        print("DRC", gds.name, "->", lyrdb.name)
+        proc = subprocess.run(cmd, check=False)
+        ultimo = proc.returncode
+        if ultimo == 0 and lyrdb.is_file():
+            return parse_lyrdb(lyrdb)
+        if ultimo not in _TRAVOU or tentativa == _TENTATIVAS_DRC:
+            break
+        print(
+            f"KLayout encerrou com código {ultimo}; "
+            f"tentativa {tentativa + 1} de {_TENTATIVAS_DRC}"
+        )
+    raise RuntimeError(f"KLayout DRC saiu com código {ultimo}")
 
 
 def falhas_duras(counts: dict[str, int], descricoes: dict[str, str]) -> dict[str, int]:
