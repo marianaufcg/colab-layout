@@ -2,7 +2,7 @@
 <report-database>
  <description>NanoSOI DRC Report</description>
  <original-file/>
- <generator>drc: script='C:\\repositories\\colab_layout\\colab-layout\\main\\drc\\NanoSOI_Silicon_v10.drc'</generator>
+ <generator>drc: script='C:\\Users\\JOSE~1.ROB\\AppData\\Local\\Temp\\drc-f6ipn__x\\NanoSOI_Silicon_v10.drc'</generator>
  <top-cell>main</top-cell>
  <tags>
  </tags>
@@ -333,30 +333,6 @@
    <comment/>
    <image/>
    <values>
-    <value>polygon: (4550,3388.995;4550,3488.995;4650,3488.995;4650,3388.995)</value>
-   </values>
-  </item>
-  <item>
-   <tags/>
-   <category>design_area</category>
-   <cell>main</cell>
-   <visited>false</visited>
-   <multiplicity>1</multiplicity>
-   <comment/>
-   <image/>
-   <values>
-    <value>polygon: (4550,3388.995;4550,3488.995;4650,3488.995;4650,3388.995)</value>
-   </values>
-  </item>
-  <item>
-   <tags/>
-   <category>design_area</category>
-   <cell>main</cell>
-   <visited>false</visited>
-   <multiplicity>1</multiplicity>
-   <comment/>
-   <image/>
-   <values>
     <value>polygon: (4550,3347.5;4550,3388.995;4650,3388.995;4650,3347.5)</value>
    </values>
   </item>
@@ -370,6 +346,30 @@
    <image/>
    <values>
     <value>polygon: (4550,3352.5;4550,3388.995;4650,3388.995;4650,3352.5)</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>design_area</category>
+   <cell>main</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (4550,3388.995;4550,3488.995;4650,3488.995;4650,3388.995)</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>design_area</category>
+   <cell>main</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (4550,3388.995;4550,3488.995;4650,3488.995;4650,3388.995)</value>
    </values>
   </item>
   <item>
@@ -3153,7 +3153,7 @@
    <comment/>
    <image/>
    <values>
-    <value>polygon: (-4650,2952.5;-4650,2988.995;-4550,2988.995;-4550,2952.5)</value>
+    <value>polygon: (-4650,2947.5;-4650,2988.995;-4550,2988.995;-4550,2947.5)</value>
    </values>
   </item>
   <item>
@@ -3165,7 +3165,7 @@
    <comment/>
    <image/>
    <values>
-    <value>polygon: (-4650,2947.5;-4650,2988.995;-4550,2988.995;-4550,2947.5)</value>
+    <value>polygon: (-4650,2952.5;-4650,2988.995;-4550,2988.995;-4550,2952.5)</value>
    </values>
   </item>
   <item>
@@ -5241,30 +5241,6 @@
    <comment/>
    <image/>
    <values>
-    <value>polygon: (-4802.5,-1411.005;-4802.5,-1311.005;-4750,-1311.005;-4750,-1411.005)</value>
-   </values>
-  </item>
-  <item>
-   <tags/>
-   <category>design_area</category>
-   <cell>main</cell>
-   <visited>false</visited>
-   <multiplicity>1</multiplicity>
-   <comment/>
-   <image/>
-   <values>
-    <value>polygon: (-4797.5,-1411.005;-4797.5,-1311.005;-4750,-1311.005;-4750,-1411.005)</value>
-   </values>
-  </item>
-  <item>
-   <tags/>
-   <category>design_area</category>
-   <cell>main</cell>
-   <visited>false</visited>
-   <multiplicity>1</multiplicity>
-   <comment/>
-   <image/>
-   <values>
     <value>polygon: (-4797.5,-1447.5;-4797.5,-1411.005;-4750,-1411.005;-4750,-1447.5)</value>
    </values>
   </item>
@@ -5278,6 +5254,30 @@
    <image/>
    <values>
     <value>polygon: (-4802.5,-1452.5;-4802.5,-1411.005;-4750,-1411.005;-4750,-1452.5)</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>design_area</category>
+   <cell>main</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (-4802.5,-1411.005;-4802.5,-1311.005;-4750,-1311.005;-4750,-1411.005)</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>design_area</category>
+   <cell>main</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (-4797.5,-1411.005;-4797.5,-1311.005;-4750,-1311.005;-4750,-1411.005)</value>
    </values>
   </item>
   <item>
@@ -6489,7 +6489,7 @@
    <comment/>
    <image/>
    <values>
-    <value>polygon: (-4750,-2511.005;-4750,-2452.5;-4650,-2452.5;-4650,-2511.005)</value>
+    <value>polygon: (-4750,-2511.005;-4750,-2447.5;-4650,-2447.5;-4650,-2511.005)</value>
    </values>
   </item>
   <item>
@@ -6501,7 +6501,7 @@
    <comment/>
    <image/>
    <values>
-    <value>polygon: (-4750,-2511.005;-4750,-2447.5;-4650,-2447.5;-4650,-2511.005)</value>
+    <value>polygon: (-4750,-2511.005;-4750,-2452.5;-4650,-2452.5;-4650,-2511.005)</value>
    </values>
   </item>
   <item>
@@ -6537,7 +6537,7 @@
    <comment/>
    <image/>
    <values>
-    <value>polygon: (-4802.5,-4211.005;-4802.5,-4111.005;-4750,-4111.005;-4750,-4211.005)</value>
+    <value>polygon: (-4802.5,-4111.005;-4802.5,-4047.5;-4750,-4047.5;-4750,-4111.005)</value>
    </values>
   </item>
   <item>
@@ -6549,7 +6549,7 @@
    <comment/>
    <image/>
    <values>
-    <value>polygon: (-4797.5,-4211.005;-4797.5,-4111.005;-4750,-4111.005;-4750,-4211.005)</value>
+    <value>polygon: (-4797.5,-4111.005;-4797.5,-4052.5;-4750,-4052.5;-4750,-4111.005)</value>
    </values>
   </item>
   <item>
@@ -6957,7 +6957,7 @@
    <comment/>
    <image/>
    <values>
-    <value>polygon: (-4802.5,-4111.005;-4802.5,-4047.5;-4750,-4047.5;-4750,-4111.005)</value>
+    <value>polygon: (-4802.5,-4211.005;-4802.5,-4111.005;-4750,-4111.005;-4750,-4211.005)</value>
    </values>
   </item>
   <item>
@@ -6969,7 +6969,7 @@
    <comment/>
    <image/>
    <values>
-    <value>polygon: (-4797.5,-4111.005;-4797.5,-4052.5;-4750,-4052.5;-4750,-4111.005)</value>
+    <value>polygon: (-4797.5,-4211.005;-4797.5,-4111.005;-4750,-4111.005;-4750,-4211.005)</value>
    </values>
   </item>
   <item>
@@ -8697,30 +8697,6 @@
    <comment/>
    <image/>
    <values>
-    <value>polygon: (4550,-2611.005;4550,-2511.005;4650,-2511.005;4650,-2611.005)</value>
-   </values>
-  </item>
-  <item>
-   <tags/>
-   <category>design_area</category>
-   <cell>main</cell>
-   <visited>false</visited>
-   <multiplicity>1</multiplicity>
-   <comment/>
-   <image/>
-   <values>
-    <value>polygon: (4550,-2611.005;4550,-2511.005;4650,-2511.005;4650,-2611.005)</value>
-   </values>
-  </item>
-  <item>
-   <tags/>
-   <category>design_area</category>
-   <cell>main</cell>
-   <visited>false</visited>
-   <multiplicity>1</multiplicity>
-   <comment/>
-   <image/>
-   <values>
     <value>polygon: (4550,-2652.5;4550,-2611.005;4650,-2611.005;4650,-2652.5)</value>
    </values>
   </item>
@@ -8734,6 +8710,30 @@
    <image/>
    <values>
     <value>polygon: (4550,-2647.5;4550,-2611.005;4650,-2611.005;4650,-2647.5)</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>design_area</category>
+   <cell>main</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (4550,-2611.005;4550,-2511.005;4650,-2511.005;4650,-2611.005)</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>design_area</category>
+   <cell>main</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (4550,-2611.005;4550,-2511.005;4650,-2511.005;4650,-2611.005)</value>
    </values>
   </item>
   <item>
